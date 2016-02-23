@@ -157,22 +157,22 @@ Figure~\ref{fig:p2_2} shows \( p(x|\theta) \) versus \( \theta \) for \( x=2 \).
 
 The log-likelihood
 
-\begin{equation}
+\[
 \begin{split}
 	l(\theta) &= \log \prod_{k=1}^n p(x_k|\theta) \\
 	&= \sum_{k=1}^n \log \theta\mathrm{e}^{-\theta x_k}
 \end{split}
-\end{equation}
+\]
 
 The gradient of \( l(\theta) \)
 
-\begin{equation}
+\[
 \begin{split}
 	\nabla l(\theta) & = \sum_{k=1}^n \frac{(1-\theta x_k)\mathrm{e}^{-\theta x_k}}{\theta\mathrm{e}^{-\theta x_k}} \\
 	&= \sum_{k=1}^n \frac{1-\theta x_k}{\theta} \\ 
 	&= \frac{n-\theta \sum_{k=1}^n x_k}{\theta}
 \end{split}
-\end{equation}
+\]
 
 Let \( \nabla l(\theta) = 0 \), we can calculate
 
@@ -188,9 +188,9 @@ Let \( \nabla l(\theta) = 0 \), we can calculate
 
 According to the law of large numbers, when \( n \) is very large, the sample average converges to the expected value.
 
-\begin{equation}
+\[
 	\frac{\sum_{k=1}^n x_k}{n} \rightarrow \mathbb{E}(x) = \int_0^{\infty}\theta x\mathrm{e}^{-\theta x}\,\mathrm{d}x = \frac{1}{\theta}
-\end{equation}
+\]
 
 So \( \hat{\theta} \) approach to the true \( \theta \) when n is very large. If the samples are generated from \( p(x|\theta) \) with \( \theta=1 \), the maximum-likelihood estimate \( \hat{\theta} \) for large n is 1.
 
