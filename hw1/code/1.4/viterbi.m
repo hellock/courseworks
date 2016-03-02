@@ -11,8 +11,7 @@ for t = 2: T
         [phi(t, j), bp(t, j)] = max(phi(t-1, :) .* trans(:, j)' * emis(j, x(t)));
     end
 end
-[~, idx] = max(phi(T, :));
-s(T) = bp(T, idx);
+[~, s(T)] = max(phi(T, :));
 for t = T: -1: 2
     s(t-1) = bp(t, s(t));
 end
