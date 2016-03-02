@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{graphicx}
+\usepackage{listings} 
 \usepackage[hidelinks]{hyperref}
 % \usepackage{epstopdf} uncomment this line if using MiKTeX
 
@@ -16,13 +17,13 @@
 \textheight=9.0in
 \headsep=0.25in 
 
-\linespread{1.1} % Line spacing
+\linespread{1.25} % Line spacing
 
 % Set up the header and footer
 \pagestyle{fancy}
-\lhead{\hwAuthorName} % Top left header
-\chead{\hwClass\ \hwTitle} % Top center header
-\rhead{\hwStudentId} % Top right header
+\lhead{\authorName} % Top left header
+\chead{\classID\ \hwTitle} % Top center header
+\rhead{\studentID} % Top right header
 \lfoot{} % Bottom left footer
 \cfoot{} % Bottom center footer
 \rfoot{Page\ \thepage\ of~\pageref{LastPage}} % Bottom right footer
@@ -32,19 +33,19 @@
 \setlength{\parindent}{0pt} % Removes all indentation from paragraphs
 
 \setcounter{secnumdepth}{0} % Removes default section numbers
-\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+\newcounter{problemCounter} % Creates a counter to keep track of the number of problems
 
-\newcommand{\homeworkProblemName}{}
-\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{
-	\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
-	\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
-	\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\newcommand{\problemName}{}
+\newenvironment{problem}[1][Problem \arabic{problemCounter}]{
+	\stepcounter{problemCounter} % Increase counter for number of problems
+	\renewcommand{\problemName}{#1} % Assign \problemName the name of the problem
+	\section{\problemName} % Make a section in the document with the custom problem count
 }{}
 
-\newcommand{\homeworkSectionName}{}
-	\newenvironment{homeworkSection}[1]{
-	\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
-	\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\newcommand{\subproblemName}{}
+	\newenvironment{subproblem}[1]{
+	\renewcommand{\subproblemName}{#1} % Assign \subproblemName to the name of the section from the environment argument
+	\subsection{\subproblemName} % Make a subsection with the custom name of the subsection
 }{}
 
 %----------------------------------------------------------------------------------------
@@ -59,10 +60,10 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\hwTitle}{Assignment\ \#1} % Assignment title
-\newcommand{\hwDueDate}{Thursday,\ March\ 5,\ 2015} % Due date
-\newcommand{\hwClass}{ENGG\ 5202} % Course/class
-\newcommand{\hwAuthorName}{Kai Chen} % Your name
-\newcommand{\hwStudentId}{1155070509} % Your student ID
+\newcommand{\dueDate}{Thursday,\ March\ 3,\ 2015} % Due date
+\newcommand{\classID}{ENGG\ 5202} % Course/Class
+\newcommand{\authorName}{Kai Chen} % Your name
+\newcommand{\studentID}{1155070509} % Your student ID
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -70,12 +71,12 @@
 
 \title{
 	\vspace{2in}
-	\textmd{\textbf{\hwClass:\ \hwTitle}}\\
-	\normalsize\vspace{0.1in}\small{Due\ on\ \hwDueDate}
+	\textmd{\textbf{\classID:\ \hwTitle}}\\
+	\normalsize\vspace{0.1in}\small{Due\ on\ \dueDate}
 	\vspace{3in}
 }
 
-\author{\textbf{\hwAuthorName}}
+\author{\textbf{\authorName}}
 \date{} % Insert date here if you want it to appear below your name
 
 %----------------------------------------------------------------------------------------
@@ -92,7 +93,7 @@
 
 % To have just one problem per page, simply put a \clearpage after each problem
 
-\begin{homeworkProblem}
+\begin{problem}
 
 The likelihood of $\theta_1$
 \[
@@ -123,17 +124,17 @@ However, \( p(x|\omega_1)=0 \) when \( x>\theta_1 \) according to the densities 
 
 Similarly, we can calculate \( \theta_2\approx14.2 \)
 
-\end{homeworkProblem}
+\end{problem}
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}
+\begin{problem}
 
-%--------------------------------------------
+%-------------------2.1-----------------------
 
-\begin{homeworkSection}{2.1} % Section within problem
+\begin{subproblem}{2.1}
 
 Figure~\ref{fig:p2_1} shows \( p(x|\theta) \) versus \( x \) for \( \theta=1 \).
 
@@ -149,11 +150,11 @@ Figure~\ref{fig:p2_2} shows \( p(x|\theta) \) versus \( \theta \) for \( x=2 \).
 \caption{\( p(x|\theta) \) versus \( \theta \) for \( x=2 \)}\label{fig:p2_2}
 \end{figure}
 
-\end{homeworkSection}
+\end{subproblem}
 
-%--------------------------------------------
+%---------------------2.2---------------------
 
-\begin{homeworkSection}{2.2}
+\begin{subproblem}{2.2}
 
 The log-likelihood
 
@@ -180,11 +181,11 @@ Let \( \nabla l(\theta) = 0 \), we can calculate
 	\hat{\theta} = \frac{n}{\sum_{k=1}^n x_k}
 \]
 
-\end{homeworkSection}
+\end{subproblem}
 
-%--------------------------------------------
+%--------------------2.3----------------------
 
-\begin{homeworkSection}{2.3}
+\begin{subproblem}{2.3}
 
 According to the law of large numbers, when \( n \) is very large, the sample average converges to the expected value.
 
@@ -194,8 +195,87 @@ According to the law of large numbers, when \( n \) is very large, the sample av
 
 So \( \hat{\theta} \) approach to the true \( \theta \) when n is very large. If the samples are generated from \( p(x|\theta) \) with \( \theta=1 \), the maximum-likelihood estimate \( \hat{\theta} \) for large n is 1.
 
-\end{homeworkSection}
+\end{subproblem}
 
-\end{homeworkProblem}
+\end{problem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{problem}
+
+%--------------------3.1----------------------
+
+\begin{subproblem}{3.1}
+
+\begin{align*}
+	p(x_k|\theta^{(t)}) &= \sum_{j=1}^m\sum_{i=1}^l p_j^{(t)}q_i^{(t)}N(x_k;\mu_j^{(t)},{\sigma_i^{(t)}}^2) \\ \\
+	p(z_k,y_k,x_k|\theta^{(t)}) &= p_{z_k}q_{y_k}N(x_k;\mu_{z_k}^{(t)},\sigma_{y_k}^{(t)}) \\ \\
+	p(z_k,y_k;x_k,\theta^{(t)}) &= \frac{p(z_k,y_k,x_k|\theta^{(t)})}{p(x_k|\theta^{(t)})} \\
+	&= \frac{p_{z_k}q_{y_k}N(x_k;\mu_{z_k}^{(t)},\sigma_{y_k}^{(t)})}{\sum_{j=1}^m\sum_{i=1}^l p_j\,q_iN(x_k;\mu_j^{(t)},{\sigma_i^{(t)}}^2)}
+\end{align*}
+
+\end{subproblem}
+
+%--------------------3.2----------------------
+
+\begin{subproblem}{3.2}
+
+\[
+	l_c(x_1,\dots,x_n,z_1,\dots,z_n,y_1,\dots,y_n;\theta) = \sum_{k=1}^n\log(p_{z_k}q_{y_k}N(x_k;\mu_{z_k}^{(t)},\sigma_{y_k}^{(t)}))
+\]
+\begin{align*}
+	Q(\theta;\theta^{(t)}) &= \mathbb{E}\{l_c(x_1,\dots,x_n,z_1,\dots,z_n,y_1,\dots,y_n;\theta)|x_1,\dots,x_n,\theta^{(t)}\} \\
+	&= \sum_{k=1}^n\mathbb{E}\{\log(p_{z_k}q_{y_k}N(x_k;\mu_{z_k}^{(t)},\sigma_{y_k}^{(t)}))|x_k,\theta^{(t)}\} \\
+	&= \sum_{k=1}^n\sum_{j=1}^m\sum_{i=1}^l\,P(z_k=j,y_k=i|x_k,\theta^{(t)})\log(p_j\,q_iN(x_k;\mu_j,{\sigma_i^2)})
+\end{align*}
+
+\end{subproblem}
+
+%--------------------3.3----------------------
+
+\begin{subproblem}{3.3}
+
+\[
+	\frac{\partial Q(\theta;\theta^{(t)})}{\partial\mu_j} = \sum_{k=1}^n\sum_{i=1}^l\,P(z_k=j,y_k=i|x_k,\theta^{(t)})\frac{x_k-\mu_j}{\sigma_i^2} = 0
+\]
+\[
+	\mu_j = \frac{\sum_{k=1}^n\sum_{i=1}^l\,P(z_k=j,y_k=i|x_k,\theta^{(t)})\frac{x_k}{\sigma_i^2}}{\sum_{k=1}^n\sum_{i=1}^l\,P(z_k=j,y_k=i|x_k,\theta^{(t)})\frac{1}{\sigma_i^2}}
+\]
+
+\end{subproblem}
+
+%--------------------3.4----------------------
+
+\begin{subproblem}{3.4}
+
+blabla
+
+\end{subproblem}
+
+\end{problem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\begin{problem}
+
+%--------------------4.1----------------------
+
+\begin{subproblem}{4.1}
+
+One sequence generated by my program: 1 2 1 1 2 2 3 1 2 3
+
+\end{subproblem}
+
+%--------------------4.2----------------------
+
+\begin{subproblem}{4.2}
+Submitted to Piazza.
+\end{subproblem}
+
+\end{problem}
 
 \end{document}
