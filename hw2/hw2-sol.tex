@@ -1,0 +1,132 @@
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{listings} 
+\usepackage[hidelinks]{hyperref}
+% \usepackage{epstopdf} uncomment this line if using MiKTeX
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.25} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\authorName} % Top left header
+\chead{\classID\ \hwTitle} % Top center header
+\rhead{\studentID} % Top right header
+\lfoot{} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of~\pageref{LastPage}} % Bottom right footer
+\renewcommand{\headrulewidth}{0.4pt} % Size of the header rule
+\renewcommand{\footrulewidth}{0.4pt} % Size of the footer rule
+
+\setlength{\parindent}{0pt} % Removes all indentation from paragraphs
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{problemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\problemName}{}
+\newenvironment{problem}[1][Problem \arabic{problemCounter}]{
+	\stepcounter{problemCounter} % Increase counter for number of problems
+	\renewcommand{\problemName}{#1} % Assign \problemName the name of the problem
+	\section{\problemName} % Make a section in the document with the custom problem count
+}{}
+
+\newcommand{\subproblemName}{}
+	\newenvironment{subproblem}[1]{
+	\renewcommand{\subproblemName}{#1} % Assign \subproblemName to the name of the section from the environment argument
+	\subsection{\subproblemName} % Make a subsection with the custom name of the subsection
+}{}
+
+%----------------------------------------------------------------------------------------
+%	MATH OPERATOR
+%----------------------------------------------------------------------------------------
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hwTitle}{Assignment\ \#2} % Assignment title
+\newcommand{\dueDate}{Thursday,\ March\ 10,\ 2015} % Due date
+\newcommand{\classID}{ENGG\ 5202} % Course/Class
+\newcommand{\authorName}{Kai Chen} % Your name
+\newcommand{\studentID}{1155070509} % Your student ID
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+	\vspace{2in}
+	\textmd{\textbf{\classID:\ \hwTitle}}\\
+	\normalsize\vspace{0.1in}\small{Due\ on\ \dueDate}
+	\vspace{3in}
+}
+
+\author{\textbf{\authorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+\setcounter{page}{0}
+\thispagestyle{empty}
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{problem}
+
+
+
+\end{problem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{problem}
+
+
+
+\end{problem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{problem}
+
+
+
+\end{problem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\begin{problem}
+
+
+
+\end{problem}
+
+\end{document}
