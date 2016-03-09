@@ -95,7 +95,72 @@
 
 \begin{problem}
 
+\begin{subproblem}{1.1}
 
+\begin{align*}
+	l(\theta_1) &= \log p(D_1|\omega_1,\theta_1) \\
+	&= \log p(x_{11}|\omega_1,\theta_1) + \log p(x_{12}|\omega_1,\theta_1) \\
+	&= 2\log \theta_1 - \theta_1(x_{11}+x_{12})
+\end{align*}
+Let
+\[
+	\nabla l(\theta_1) = 0
+\]
+We get
+\[
+	\hat{\theta_1} = \frac{2}{x_{11}+x_{12}} = \frac{1}{3}
+\]
+Similarly,
+\[
+	\hat{\theta_2} = \frac{2}{x_{21}+x_{22}} = \frac{1}{6}
+\]
+
+\end{subproblem}
+
+\begin{subproblem}{1.2}
+
+Given \(\theta_1 = \frac{1}{3}\) and \(\theta_2 = \frac{1}{6}\), we have \\
+\[
+p(x|\omega_1) = 
+	\begin{cases}
+		0 & x < 0 \\
+		\frac{1}{3}\mathrm{e}^{-\frac{x}{3}} & x\geq0
+	\end{cases}
+\]
+\[
+p(x|\omega_2) = 
+	\begin{cases}
+		0 & x < 0 \\
+		\frac{1}{6}\mathrm{e}^{-\frac{x}{6}} & x\geq0
+	\end{cases}
+\]
+\begin{align*}
+	g(x) &= p(\omega_1|x) - p(\omega_2|x) \\
+	&= \ln\frac{p(x|\omega_1)}{p(x|\omega_2)} - \ln\frac{p(\omega_1)}{p(\omega_2)}
+\end{align*}
+Let
+\[
+	g(x) = 0
+\]
+We have
+\begin{align*}
+	x^* &= \frac{\ln\theta_1-\ln\theta_2}{\theta_1-\theta_2} \\
+	&= 6\ln2\approx4.16
+\end{align*}
+
+\end{subproblem}
+
+\begin{subproblem}{1.3}
+
+The classification rule is when \(x>x^*\), class label is 2, when \(0<x<x^*\), class label is 1. \\
+So the expected classification error
+\begin{align*}
+	Error &= \int_0^{x^*}p(x|\omega_2)p(\omega_2)\mathrm{d}x + \int_{x^*}^\infty p(x|\omega_1)p(\omega_1)\mathrm{d}x \\
+	&= \frac{1}{2}\int_0^{6\ln2}\mathrm{e}^{-\frac{x}{6}}\mathrm{d}x + \frac{1}{2}\int_{6\ln2}^\infty\frac{1}{3}\mathrm{e}^{-\frac{x}{3}}\mathrm{d}x \\
+	&= \frac{3}{8}
+\end{align*}
+
+\end{subproblem}
 
 \end{problem}
 
@@ -105,8 +170,16 @@
 
 \begin{problem}
 
-
-
+\(a_{12}\) is updated in the M step and
+\begin{align*}
+\hat{a}_{12} &= \frac{\sum_{t=2}^T\xi_{t-1}(\omega_1,\omega_2)}{\sum_{t=2}^T\sum_{j'=1}^c\xi_{t-1}(\omega_1,\omega_{j'})} \\
+&= \frac{\sum_{t=2}^T P(Z_{t-1}=\omega_1,Z_t=\omega_2|X,\theta^{old})}{\sum_{t=2}^T\sum_{j'=1}^c\xi_{t-1}(\omega_1,\omega_{j'})}
+\end{align*}
+Because \(a_{12}\) is initialized as 0, therefore for any \(t>1\),we have
+\[
+	P(Z_{t-1}=\omega_1,Z_t=\omega_2|X,\theta^{old}) = 0
+\]
+So in all subsequence updates of the EM algorithm \(\hat{a}_{12}=0\).
 \end{problem}
 
 %----------------------------------------------------------------------------------------
@@ -115,7 +188,14 @@
 
 \begin{problem}
 
+\begin{subproblem}{3.1}
+The sample size for the ``same density'' in \(\mathcal{R}^d\) is \(\sqrt[d]{n_1}\). \\
+If \(n_1=100\), the sample size needed is \(100^{20}\).
+\end{subproblem}
 
+\begin{subproblem}{3.2}
+
+\end{subproblem}
 
 \end{problem}
 
