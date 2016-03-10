@@ -5,7 +5,9 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{graphicx}
-\usepackage{listings} 
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{booktabs}
 \usepackage[hidelinks]{hyperref}
 % \usepackage{epstopdf} uncomment this line if using MiKTeX
 
@@ -189,12 +191,30 @@ So in all subsequence updates of the EM algorithm \(\hat{a}_{12}=0\).
 \begin{problem}
 
 \begin{subproblem}{3.1}
-The sample size for the ``same density'' in \(\mathcal{R}^d\) is \(\sqrt[d]{n_1}\). \\
+The sample size for the ``same density'' in \(\mathcal{R}^d\) is \(n_1^d\). \\
 If \(n_1=100\), the sample size needed is \(100^{20}\).
 \end{subproblem}
 
 \begin{subproblem}{3.2}
+\begin{align*}
+	p &= \frac{k/n}{V} \\
+	  &= k/n \\
+	  &= nl_d^d(p)
+\end{align*}
+So
+\[
+	l_d(p) = p^\frac{1}{d}
+\]
+We can calculate
+\begin{align*}
+l_5(0.01) &= 0.398\\
+l_5(0.1) &= 0.63\\
+l_{20}(0.1) &= 0.89\\
+\end{align*}
+\end{subproblem}
 
+\begin{subproblem}{3.3}
+If the dimension is high, the edge length of Parzen window will be greater and approximate to 1, leading to larger errors and a ``flat'' and ``uniform'' estimated density.
 \end{subproblem}
 
 \end{problem}
@@ -205,7 +225,61 @@ If \(n_1=100\), the sample size needed is \(100^{20}\).
 
 \begin{problem}
 
+\begin{subproblem}{4.1}
 
+If it is Gaussian distribution and the class covariances are identical, then the dicision boundary found by two methods will be the same.
+
+\end{subproblem}
+
+\begin{subproblem}{4.2}
+
+The results are shown in table~\ref{tab:4_1} and figure~\ref{fig:4_1}. \\
+I observe that LR is more robust than FLD when dealing with outliners and noises. The two algorithms have similar testing error rates when trained using \textbf{train1}, but FLD has significantly larger error rate when trained using \textbf{train1\_2}, because the label of FLD can be infinite while the sigmoid function in LR turns it to (-1, 1), which can handle such outliners.
+
+\begin{table}[!htbp]
+\centering
+\caption{Dataset 1 results}\label{tab:4_1}
+\begin{tabular}{cccc}
+\toprule
+Train set & Test set & Algorithm & Error rate \\
+\midrule
+train1 & test1 & FLD & 0.07 \\
+train1 & test1 & LR & 0.067 \\
+train1\_2 & test1 & FLD & 0.151 \\
+train1\_2 & test1 & LR & 0.067 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\subfigure{\includegraphics[width=3in]{image/4_1}}
+\hspace{0.5cm}
+\subfigure{\includegraphics[width=3in]{image/4_2}}
+\caption{Train data and decision boundaries (left: train1, right: train1\_2)}\label{fig:4_1}
+\end{figure}
+
+\end{subproblem}
+
+\begin{subproblem}{4.3}
+
+The error rates are shown in Table~\ref{tab:4_2}.
+The Gaussian asumption is not reasonable for the representation of digit images. The values of \(x\) are discrete and binary, so it is not Gaussian. FLD and LR are sensitive to the Gaussian assumption, because the derivation of these methods are based on Gaussian.
+
+\begin{table}[!htbp]
+\centering
+\caption{Dataset 2 results}\label{tab:4_2}
+\begin{tabular}{cccc}
+\toprule
+Train set & Test set & Algorithm & Error rate \\
+\midrule
+train2 & test2 & FLD & 0.23 \\
+train2 & test2 & LR & 0.1425 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{subproblem}
 
 \end{problem}
 
