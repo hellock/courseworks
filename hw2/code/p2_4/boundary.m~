@@ -18,6 +18,5 @@ for decision = 1:ndec
     ty = -w(1,decision)/w(3,decision) - tx*w(2,decision)/w(3,decision);
     plot(tx,ty,'k', 'LineStyle',styles(decision,:));
 end
-legend('training data(class 1)', 'training data(class 2)', 'FLD', 'logistic regression',...
-    'Location', 'SouthEast');    
+% legend('FLD', 'logistic regression');    
 hold off;
