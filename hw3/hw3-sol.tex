@@ -98,36 +98,29 @@
 \begin{problem}
 
 \begin{subproblem}{1.1}
-\[
-\begin{split}
+\begin{align*}
 K_3(x, x') &= K_1(x, x') + K_2(x, x') \\
 &= \Phi_1(x)\Phi_1(x') + \Phi_2(x)\Phi_2(x') \\
 &= [\Phi_1(x), \Phi_2(x)]\cdot[\Phi_1(x'), \Phi_2(x')] \\
 \Phi_3(x) &= [\Phi_1(x), \Phi_2(x)]
-\end{split}
-\]
+\end{align*}
 \end{subproblem}
 
 \begin{subproblem}{1.2}
-\[
-\begin{split}
+\begin{align*}
 K_3(x, x') &= K_1(x, x')K_2(x, x') \\
 &= \Phi_1(x)\Phi_1(x')\Phi_2(x)\Phi_2(x') \\
 \Phi_3(x) &= \Phi_1(x)\Phi_2(x)
-\end{split}
-\]
+\end{align*}
 \end{subproblem}
 
 \begin{subproblem}{1.3}
-\[
-\begin{split}
+\begin{align*}
 K(x, x') &= 1 + x \cdot x' + 4{(x \cdot x')}^2 \\
 &= 1 + x_1x_1' + x_2x_2' + 4{(x_1x_1' + x_2x_2')}^2 \\
 &= 1 + x_1x_1' + x_2x_2' + 4x_1^2x_1'^2 + 4x_2^2x_2'^2 + 8x_1x_1'x_2x_2' \\
 \Phi(x) &= [1\ x_1\ x_2\ 2x_1^2\ 2x_2^2\ 2\sqrt{2}x_1x_2]
-\end{split}
-\]
-
+\end{align*}
 \end{subproblem}
 
 \end{problem}
@@ -232,19 +225,51 @@ The leave-one-out cross-validation error is
 \begin{problem}
 
 \begin{subproblem}{4.1}
-
+The disicion boundary of the first decision stump chosen by Adaboost is drawn in Figure~\ref{fig:4_1}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=4in]{image/4_1}
+\caption{Decision boundary of the first decision stump}\label{fig:4_1}
+\end{figure}
 \end{subproblem}
 
 \begin{subproblem}{4.2}
-
+Calculate the vote of the first classifier
+\begin{align*}
+\epsilon_1 &= 0.5 - \frac{1}{2}(\sum_{i=1}^n\tilde{W}_i^{(0)}y_i h(x_i;\hat{\theta}_1)) \\ 
+&= \frac{1}{8} \\
+\alpha_1 &= 0.5\ln\frac{1-\epsilon_1}{\epsilon_1} \\
+&= 0.5\ln7
+\end{align*}
+The sixth sample is misclassified, so
+\begin{align*}
+W_6^{(1)} &= W_6^{(0)}\cdot\exp \{-y_6\alpha_1h(x_6;\hat{\theta}_1)\} = \frac{7}{8}\sqrt{e} \\
+W_i^{(1)} &= W_i^{(0)} = \frac{1}{8} \mathrm{\quad for\ all\ } i \neq 6
+\end{align*}
+So we can get the new weight for all training samples
+\begin{align*}
+\tilde{W}_6^{(1)} &\approx 0.6225 \\
+\tilde{W}_i^{(1)} &\approx 0.0539 \mathrm{\quad for\ all\ } i \neq 6
+\end{align*}
+Through line search, we can get the decision boundary of the second decision stump, as is shown in Figure~\ref{fig:4_2}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=4in]{image/4_2}
+\caption{Decision boundary of the second decision stump}\label{fig:4_2}
+\end{figure}
 \end{subproblem}
 
 \begin{subproblem}{4.3}
-
+The decision boundary of the first decision stump chosen by Adaboost is drawn in Figure~\ref{fig:4_3}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=4in]{image/4_3}
+\caption{Decision boundary of the first decision stump}\label{fig:4_3}
+\end{figure}
 \end{subproblem}
 
 \begin{subproblem}{4.4}
-
+The two finally trained classifiers will behave similarly.
 \end{subproblem}
 
 \begin{subproblem}{4.5}
