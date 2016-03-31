@@ -1,0 +1,12 @@
+y = 1;
+pos = [0 1 2 7];
+neg = [4 5 9 10];
+plot(pos, y, '^k');
+hold on;
+plot(neg, y, 'xk');
+set(gca, 'ytick', []);
+grid on;
+plot([3 3], [0 2], '-b');
+text(3.1, 1.3, '(a)');
+text(3.4, 1.2, '-');
+text(2.5, 1.2, '+');
