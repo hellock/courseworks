@@ -108,10 +108,13 @@ K_3(x, x') &= K_1(x, x') + K_2(x, x') \\
 
 \begin{subproblem}{1.2}
 \begin{align*}
-K_3(x, x') &= K_1(x, x')K_2(x, x') \\
+K_4(x, x') &= K_1(x, x')K_2(x, x') \\
 &= \Phi_1(x)\Phi_1(x')\Phi_2(x)\Phi_2(x') \\
-\Phi_3(x) &= \Phi_1(x)\Phi_2(x)
 \end{align*}
+Suppose that \(\Phi_1(x)=[\phi_1^1(x), \phi_1^2(x), \dots, \phi_1^m(x)]\) and \(\Phi_2(x)=[\phi_2^1(x), \phi_2^2(x), \dots, \phi_2^n(x)]\), then \(\Phi_4(x)\) is a \(m\times n\) dimension mapping.
+\[
+\Phi_4^{n(i-1)+j}(x) = \Phi_1^i(x)\phi_2^j(x)
+\]
 \end{subproblem}
 
 \begin{subproblem}{1.3}
@@ -243,13 +246,13 @@ Calculate the vote of the first classifier
 \end{align*}
 The sixth sample is misclassified, so
 \begin{align*}
-W_6^{(1)} &= W_6^{(0)}\cdot\exp \{-y_6\alpha_1h(x_6;\hat{\theta}_1)\} = \frac{7}{8}\sqrt{e} \\
-W_i^{(1)} &= W_i^{(0)} = \frac{1}{8} \mathrm{\quad for\ all\ } i \neq 6
+W_6^{(1)} &= W_6^{(0)}\cdot\exp \{-y_6\alpha_1h(x_6;\hat{\theta}_1)\} = \frac{\sqrt{7}}{8} \\
+W_i^{(1)} &= W_i^{(0)}\cdot\exp \{-y_i\alpha_1h(x_i;\hat{\theta}_1)\} = \frac{1}{8\sqrt{7}} \mathrm{\quad for\ all\ } i \neq 6
 \end{align*}
 After normalization, we can get the new weight for all training samples
 \begin{align*}
-\tilde{W}_6^{(1)} &\approx 0.6225 \\
-\tilde{W}_i^{(1)} &\approx 0.0539 \mathrm{\quad for\ all\ } i \neq 6
+\tilde{W}_6^{(1)} &= 0.5 \\
+\tilde{W}_i^{(1)} &\approx 0.0714 \mathrm{\quad for\ all\ } i \neq 6
 \end{align*}
 Through line search, we can get the decision boundary of the second decision stump, as is shown in Figure~\ref{fig:4_2}.
 \begin{figure}[htbp]
