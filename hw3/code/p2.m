@@ -2,28 +2,28 @@ load('svm.mat');
 %% set1
 model1_linear = svmtrain(set1_train.y, set1_train.X, '-t 0 -c 1000 -q');
 [~, accu11, ~] = svmpredict(set1_test.y, set1_test.X, model1_linear);
-model1_poly = svmtrain(set1_train.y, set1_train.X, '-t 1 -d 2 -c 1000 -q');
+model1_poly = svmtrain(set1_train.y, set1_train.X, '-t 1 -d 2 -r 1 -c 1000 -q');
 [~, accu12, ~] = svmpredict(set1_test.y, set1_test.X, model1_poly);
 model1_rbf = svmtrain(set1_train.y, set1_train.X, '-t 2 -g 0.5 -c 1000 -q');
 [~, accu13, ~] = svmpredict(set1_test.y, set1_test.X, model1_rbf);
 %% set2
 model2_linear = svmtrain(set2_train.y, set2_train.X, '-t 0 -c 1000 -q');
 [~, accu21, ~] = svmpredict(set2_test.y, set2_test.X, model2_linear);
-model2_poly = svmtrain(set2_train.y, set2_train.X, '-t 1 -d 2 -c 1000 -q');
+model2_poly = svmtrain(set2_train.y, set2_train.X, '-t 1 -d 2 -r 1 -c 1000 -q');
 [~, accu22, ~] = svmpredict(set2_test.y, set2_test.X, model2_poly);
 model2_rbf = svmtrain(set2_train.y, set2_train.X, '-t 2 -g 0.5 -c 1000 -q');
 [~, accu23, ~] = svmpredict(set2_test.y, set2_test.X, model2_rbf);
 %% set3
 model3_linear = svmtrain(set3_train.y, set3_train.X, '-t 0 -c 1000 -q');
 [~, accu31, ~] = svmpredict(set3_test.y, set3_test.X, model3_linear);
-model3_poly = svmtrain(set3_train.y, set3_train.X, '-t 1 -d 2 -c 1000 -q');
+model3_poly = svmtrain(set3_train.y, set3_train.X, '-t 1 -d 2 -r 1 -c 1000 -q');
 [~, accu32, ~] = svmpredict(set3_test.y, set3_test.X, model3_poly);
 model3_rbf = svmtrain(set3_train.y, set3_train.X, '-t 2 -g 0.5 -c 1000 -q');
 [~, accu33, ~] = svmpredict(set3_test.y, set3_test.X, model3_rbf);
 %% set4
 model4_linear = svmtrain(set4_train.y, set4_train.X, '-t 0 -c 1000 -q');
 [~, accu41, ~] = svmpredict(set4_test.y, set4_test.X, model4_linear);
-model4_poly = svmtrain(set4_train.y, set4_train.X, '-t 1 -d 2 -c 1000 -q');
+model4_poly = svmtrain(set4_train.y, set4_train.X, '-t 1 -d 2 -r 1 -c 1000 -q');
 [~, accu42, ~] = svmpredict(set4_test.y, set4_test.X, model4_poly);
 model4_rbf = svmtrain(set4_train.y, set4_train.X, '-t 2 -g 0.222 -c 1000 -q');
 [~, accu43, ~] = svmpredict(set4_test.y, set4_test.X, model4_rbf);
