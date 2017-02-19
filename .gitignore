@@ -6,4 +6,5 @@
 *.synctex.gz
 *-eps-converted-to.pdf
 *.m~
+hw*-sol.pdf
 .DS_Store
