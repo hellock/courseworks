@@ -250,6 +250,12 @@ The receptive field of a neuron as the output of the pooling layer in (a) is $8\
 &= [L_\mathbf{u}[f*w]](\mathbf{g})
 \end{align*}
 
+To implement the group convolution,
+
+1) duplicate the feature map $f$ with 4 rotations to form $F^+$ \\
+2) duplicate the filter $w$ with 4 rotations to form $W^+$ \\
+3) for each $w$ in $W^+$, perform traditional convolution on $F^+$ with permuted $W^+$
+
 \end{subproblem}
 
 \end{problem}
