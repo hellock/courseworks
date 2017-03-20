@@ -220,7 +220,7 @@ Backward: \(
 	
 \begin{subproblem}{5.1}
 	
-Training curve is shown in Fig.~\ref{fig:loss}, and the filters learned in the first convolutional layer is shown in Fig.~\ref{fig:filter}.
+Training curve is shown in Fig.~\ref{fig:loss}, and the filters learned in the first convolutional layer is shown in Fig.~\ref{fig:filter}. The test accuracy is 63.4\%(with weight decay of $0.0005$) and 61.2\%(without weight decay).
 \begin{figure}[htbp]
 	\begin{center}
 		\includegraphics[width=0.6\linewidth]{image/loss.eps}
@@ -241,6 +241,7 @@ Training curve is shown in Fig.~\ref{fig:loss}, and the filters learned in the f
 
 \begin{subproblem}{5.2}
 
+Proof of equation 3 and 4 is as following.
 \begin{align*}
 Var[y_l] &= n_lVar[w_lx_l] \\
 &= n_l (E^2[w_l]Var[x_l] + E^2[x_l]Var[w_l] + Var[x_l]Var[w_l]) \\
@@ -257,10 +258,13 @@ E[x^2_l] &= \int_{-\infty}^{+\infty}[ReLU(y_{l-1})]^2p(y)dy \\
 &= \frac{1}{2}Var[y_{l-1}]
 \end{align*}
 
+The test accuracy is 62.1\% compared with 63.4\% in result 1.
+
 \end{subproblem}
 
 \begin{subproblem}{5.3}
-	
+
+Adding BN layers and increasing batch size to 32 boosts the test accuracy to 65.6\%.
 	
 \end{subproblem}
 
