@@ -109,7 +109,7 @@ Let $o_t = W_{hz}h_t + b_z$, then
 -z_{t, y_t}z_{t, i}h_t, & \text{if } i \neq y_t \\
 z_{t, y_t}(1 - z_{t, i})h_t, & \text{if } i = y_t
 \end{cases} \\
-&= z_{t, y_t}h_t(\delta_{i, y_t} - z_t)^T \\
+&= z_{t, y_t}h_t(\delta^i_{y_t} - z_t)^T \\
 %&= z_{t, y_t}
 %\begin{bmatrix}
 %z_{t,1}h_t, & z_{t,2}h_t, & \dots, & (1-z_{t, y_t})h_t, & \dots, & z_{t,n}h_t
@@ -117,7 +117,7 @@ z_{t, y_t}(1 - z_{t, i})h_t, & \text{if } i = y_t
 \end{align*}
 where 
 \[
-\delta_{i,j}=
+\delta^i_j=
 \begin{cases}
 1, & \text{if } i = j \\
 0, & \text{if } i \neq j
@@ -126,7 +126,7 @@ where
 So
 \begin{align*}
 \frac{\partial L}{\partial W_{hz}} &= -\sum_t \frac{1}{z_{t, y_t}} \frac{\partial z_{t, y_t}}{\partial W_{hz}} \\
-&= \sum_t h_t(z_t - \delta_{i, y_t})^T
+&= \sum_t h_t(z_t - \delta^i_{y_t})^T
 %\begin{bmatrix}
 %z_{t,1}h_t, & z_{t,2}h_t, & \dots, & (z_{t, y_t} - 1)h_t, & \dots, & z_{t,n}h_t
 %\end{bmatrix}
@@ -136,16 +136,8 @@ So
 \frac{\partial L}{\partial W_{hh}} &= \frac{\partial L}{\partial h_t} \frac{\partial h_t}{\partial W_{hh}} \\
 &= (\frac{\partial L}{\partial h_{t+1}} \frac{\partial h_{t+1}}{\partial h_t} + \frac{\partial L}{\partial z_t} \frac{\partial z_t}{\partial h_t})\frac{\partial h_t}{\partial W_{hh}} \\
 &= (\frac{\partial L_{t+1}}{\partial z_{t+1}} \frac{\partial z_{t+1}}{\partial h_{t+1}} \frac{\partial h_{t+1}}{\partial h_t} + \frac{\partial L_t}{\partial z_t} \frac{\partial z_t}{\partial h_t})\frac{\partial h_t}{\partial W_{hh}} \\
-&= (W_{hz}^T(z_{t+1}-\delta_{i, y_{t+1}})(1+h_{t+1}^2)W_{hh}+z_t-\delta_{i, y_t})(1+h_t^2)h_{t-1}
+&= (W_{hz}^T(z_{t+1}-\delta^i_{y_{t+1}})W_{hh}(1+h_{t+1}^2)+W_{hz}^T(z_t-\delta^i_{y_t}))(1+h_t^2)h_{t-1}
 \end{align*}
-where
-\[
-\delta_{i,j}=
-\begin{cases}
-1, & \text{if } i = j \\
-0, & \text{if } i \neq j
-\end{cases}
-\]
 
 \end{problem}
 
@@ -174,7 +166,7 @@ where
 
 \begin{problem}
 
-At stage 3 and stage 6.
+At stage 3, 6 and 7.
 
 \end{problem}
 
@@ -210,5 +202,60 @@ Backward: \(
 \end{subproblem}
 
 \end{problem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+\begin{problem}
+	
+\begin{subproblem}{5.1}
+	
+Training curve is shown in Fig.~\ref{fig:loss}, and the filters learned in the first convolutional layer is shown in Fig.~\ref{fig:filter}.
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{image/loss.eps}
+	\end{center}
+	\caption{Training curve.}
+	\label{fig:loss}
+\end{figure}
+
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{image/filters.eps}
+	\end{center}
+	\caption{Visualization of filters.}
+	\label{fig:filter}
+\end{figure}
+	
+\end{subproblem}
+
+\begin{subproblem}{5.2}
+
+\begin{align*}
+Var[y_l] &= n_lVar[w_lx_l] \\
+&= n_l (E^2[w_l]Var[x_l] + E^2[x_l]Var[w_l] + Var[x_l]Var[w_l]) \\
+&= n_l (E^2[x_l]Var[w_l] + Var[x_l]Var[w_l]) \\
+&= n_l Var[w_l](E^2[x_l] + Var[x_l]) \\
+&= n_l Var[w_l] E[x^2_l]
+\end{align*}
+
+\begin{align*}
+E[x^2_l] &= \int_{-\infty}^{+\infty}[ReLU(y_{l-1})]^2p(y)dy \\
+&= \int_0^{+\infty}y^2_{l-1}p(y)dy \\
+&= \frac{1}{2}\int_{-\infty}^{+\infty}y^2_{l-1}p(y)dy \\
+&= \frac{1}{2}\int_{-\infty}^{+\infty}(y - E[y_{l-1}])^2p(y)dy \\
+&= \frac{1}{2}Var[y_{l-1}]
+\end{align*}
+
+\end{subproblem}
+
+\begin{subproblem}{5.3}
+	
+	
+\end{subproblem}
+
+\end{problem}
+
 
 \end{document}
