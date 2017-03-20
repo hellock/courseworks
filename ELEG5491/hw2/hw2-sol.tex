@@ -148,12 +148,21 @@ So
 \begin{problem}
 
 \begin{subproblem}{2.1}
-	
+
+\begin{align*}
+h_t &= G_t(x_t, \dots, x_1) \\
+&= F_\theta(h_{t-1}, x_t) \\
+&= F_\theta(F_\theta(h_{t-2}, x_{t-1}), x_t) \\
+&= \dots
+\end{align*}
 	
 \end{subproblem}
 
 \begin{subproblem}{2.2}
 
+1. The RNN units share parameters among different time steps.
+
+2. The current \(h_t\) contains information about the whole past sequence.
 
 \end{subproblem}
 
@@ -179,17 +188,17 @@ At stage 3, 6 and 7.
 	
 \begin{subproblem}{4.1}
 
-\(dn+(L-2)n^2+nc\)
+\(dn+(L-1)n^2+nc\)
 	
 \end{subproblem}
 
 \begin{subproblem}{4.2}
 
-Forward: \(dn+(L-2)n^2+nc\)
+Forward: \(dn+(L-1)n^2+nc\)
 
-Backward: \(2(dn+(L-2)n^2+nc)\)
+Backward: \(2(dn+(L-1)n^2+nc)\)
 
-Total: \(O(dn+(L-2)n^2+nc) = O((c+d+Ln)n)\)
+Total: \(O(dn+(L-1)n^2+nc) = O((c+d+Ln)n)\)
 
 \end{subproblem}
 
