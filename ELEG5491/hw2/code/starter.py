@@ -59,23 +59,23 @@ class Net(nn.Module):
         self.fc2 = nn.Linear(120, 84)
         self.bn4 = nn.BatchNorm1d(84)
         self.fc3 = nn.Linear(84, 10)
-        # self.msra_init()
+        self.msra_init()
 
     def forward(self, x):
         x = self.conv1(x)
-        x = self.bn1(x)
+        # x = self.bn1(x)
         x = F.relu(x)
         x = self.pool(x)
         x = self.conv2(x)
-        x = self.bn2(x)
+        # x = self.bn2(x)
         x = F.relu(x)
         x = self.pool(x)
         x = x.view(-1, 400)
         x = self.fc1(x)
-        x = self.bn3(x)
+        # x = self.bn3(x)
         x = F.relu(x)
         x = self.fc2(x)
-        x = self.bn4(x)
+        # x = self.bn4(x)
         x = F.relu(x)
         x = self.fc3(x)
         x = F.relu(x)
@@ -91,7 +91,7 @@ class Net(nn.Module):
     def msra_init(self):
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
-                n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
+                n = m.kernel_size[0] * m.kernel_size[1] * m.in_channels
                 m.weight.data.normal_(0, math.sqrt(2.0 / n))
             elif isinstance(m, nn.Linear):
                 n = m.weight.size(1)
