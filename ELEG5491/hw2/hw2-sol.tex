@@ -136,7 +136,7 @@ So
 \frac{\partial L}{\partial W_{hh}} &= \frac{\partial L}{\partial h_t} \frac{\partial h_t}{\partial W_{hh}} \\
 &= (\frac{\partial L}{\partial h_{t+1}} \frac{\partial h_{t+1}}{\partial h_t} + \frac{\partial L}{\partial z_t} \frac{\partial z_t}{\partial h_t})\frac{\partial h_t}{\partial W_{hh}} \\
 &= (\frac{\partial L_{t+1}}{\partial z_{t+1}} \frac{\partial z_{t+1}}{\partial h_{t+1}} \frac{\partial h_{t+1}}{\partial h_t} + \frac{\partial L_t}{\partial z_t} \frac{\partial z_t}{\partial h_t})\frac{\partial h_t}{\partial W_{hh}} \\
-&= (W_{hz}^T(z_{t+1}-\delta^i_{y_{t+1}})W_{hh}(1+h_{t+1}^2)+W_{hz}^T(z_t-\delta^i_{y_t}))(1+h_t^2)h_{t-1}
+&= (W_{hz}^T(z_{t+1}-\delta^i_{y_{t+1}})W_{hh}(1-h_{t+1}^2)+W_{hz}^T(z_t-\delta^i_{y_t}))(1-h_t^2)h_{t-1}
 \end{align*}
 
 \end{problem}
