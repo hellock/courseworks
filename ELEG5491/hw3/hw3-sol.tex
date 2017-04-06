@@ -52,6 +52,8 @@
 	\subsection{\subproblemName} % Make a subsection with the custom name of the subsection
 }{}
 
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
 %----------------------------------------------------------------------------------------
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
@@ -137,6 +139,13 @@ The special structure of RBM ensures the conditionally independency, so that the
 %----------------------------------------------------------------------------------------
 
 \begin{problem}
+	
+The goal of PCA is to minimize
+\[
+J = \frac{1}{N}\sum_{n=1}^N \norm{\vx_n - \tilde{\vx}_n} 
+\]
+where $\tilde{\vx}_n$ is the reconstructed vector of projection of $\vx_n$. And this is exactly the target of a linear autoencoder.
+
 
 \end{problem}
 
